@@ -1,4 +1,7 @@
 class ParticipantsController < ApplicationController
+    before_action :check_host_role, only: [:index,  :destroy]
+
+
     def index
       @participants = Participant.all
     end
@@ -45,7 +48,6 @@ class ParticipantsController < ApplicationController
     def send_feedback_link
       @participant = Participant.find(params[:id])
       
-      # Optional: Destroy existing feedback link if it exists
       @participant.feedback_link&.destroy 
     
       @feedback_link = @participant.create_feedback_link!(
@@ -58,14 +60,22 @@ class ParticipantsController < ApplicationController
       redirect_to participants_path, notice: "We would appreciate your feedback on our workshop #{@participant.email}"
     end
     
-
-    # def feedback_summary
-    #     @participants = Participant.includes(:feedback_link)
-    # end
-  
     private
   
     def participant_params
       params.require(:participant).permit(:name, :email)
+    end
+
+    def check_host_role
+      # Redirect to login page if no user is logged in
+      unless user_signed_in?
+        redirect_to new_user_session_path, alert: 'You must be logged in to access this page.'
+        return
+      end
+  
+      # Redirect to a safe page if the current user is not a host
+      unless current_user.host?
+        redirect_to participant_path(current_user), alert: 'You are not authorized to access this page.'
+      end
     end
   end

@@ -7,3 +7,14 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+# Creating Users
+User.create(email: 'user1@example.com', password: 'password123', password_confirmation: 'password123', host: true)
+User.create(email: 'user2@example.com', password: 'password123', password_confirmation: 'password123', host: false)
+
+# Creating Participants
+5.times do |i|
+  Participant.create(name: "Participant #{i+1}", email: "participant#{i+1}@example.com")
+end
+
+puts "Seeding completed: Created 2 users and 5 participants."
