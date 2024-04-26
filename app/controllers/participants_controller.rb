@@ -42,22 +42,6 @@ class ParticipantsController < ApplicationController
       end
     end
 
-    # def send_feedback_link
-    #   @participant = Participant.find(params[:id])
-      
-    #   # Destroy existing feedback link if it exists
-    #   @participant.feedback_link.destroy if @participant.feedback_link.present?
-    
-    #   @feedback_link = @participant.create_feedback_link!(
-    #     expires_at: 2.weeks.from_now,
-    #     token: SecureRandom.uuid
-    #   )
-    
-    #   ParticipantMailer.send_feedback_link(@participant, @feedback_link).deliver_later
-    
-    #   redirect_to participants_path, notice: "Feedback link sent to #{@participant.email}"
-    # end
-
     def send_feedback_link
       @participant = Participant.find(params[:id])
       
@@ -71,13 +55,13 @@ class ParticipantsController < ApplicationController
       
       ParticipantMailer.send_feedback_link(@participant, @feedback_link).deliver_later
       
-      redirect_to participants_path, notice: "Feedback link sent to #{@participant.email}"
+      redirect_to participants_path, notice: "We would appreciate your feedback on our workshop #{@participant.email}"
     end
     
 
-    def feedback_summary
-        @participants = Participant.includes(:feedback_link)
-    end
+    # def feedback_summary
+    #     @participants = Participant.includes(:feedback_link)
+    # end
   
     private
   

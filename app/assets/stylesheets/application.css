@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+/* Increase table size */
+table {
+  width: 100%;
+  font-size: 1rem;
+}
+
+/* Increase cell padding */
+th,
+td {
+  padding: 1rem;
+}
