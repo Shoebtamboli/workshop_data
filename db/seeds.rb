@@ -9,8 +9,8 @@
 #   end
 
 # Creating Users
-User.create(email: 'user1@example.com', password: 'password123', password_confirmation: 'password123', host: true)
-User.create(email: 'user2@example.com', password: 'password123', password_confirmation: 'password123', host: false)
+User.create(email: 'user1@example.com', password: 'password', password_confirmation: 'password', host: true)
+User.create(email: 'user2@example.com', password: 'password', password_confirmation: 'password', host: false)
 
 # Creating Participants
 5.times do |i|
