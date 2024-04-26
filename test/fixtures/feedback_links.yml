@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  participant: one
+  feedback: MyText
+  expires_at: 2024-04-25 19:20:03
+
+two:
+  participant: two
+  feedback: MyText
+  expires_at: 2024-04-25 19:20:03

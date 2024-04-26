@@ -1,0 +1,13 @@
+<h1>Workshop Feedback</h1>
+<% if flash[:notice].present? %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+<%= form_with(model: [@participant, @feedback_link], local: true) do |form| %>
+  <div class="field">
+    <%= form.label :feedback %>
+    <%= form.text_area :feedback %>
+  </div>
+  <div class="actions">
+    <%= form.submit 'Submit Feedback' %>
+  </div>
+<% end %>
