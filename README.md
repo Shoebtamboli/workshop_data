@@ -9,17 +9,22 @@ Things you may want to cover:
 
 ruby 3.3.0
 
-## Run below command to start the application
+## How to get started with the application
 
+### Clone the repo
+```
+git clone https://github.com/Shoebtamboli/workshop_data.git
+```
+### install dependencies
 ```
 bundle install
 ```
-
+### Set up DB
 ```
 rails db:reset
 rails db:seed
 ```
-
+### Start the server
 ```
 rails s
 ```
